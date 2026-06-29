@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta Nintendo do Arthur</title>
+  <style>
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(160deg,#003b8f,#009b3a);color:#10233f;padding:18px} .page{max-width:920px;margin:auto;background:#fff;border-radius:28px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.25);border:6px solid #ffdf00}.hero{background:linear-gradient(135deg,#003b8f,#001b4d);color:white;padding:28px;text-align:center}.hero h1{margin:0;font-size:38px;line-height:1.05}.hero p{font-size:18px;margin:12px 0 0}.photo{width:100%;display:block;max-height:520px;object-fit:cover;object-position:top center}.content{padding:24px}.tag{display:inline-block;background:#009b3a;color:#fff;padding:12px 18px;border-radius:999px;font-weight:bold;margin-bottom:18px}.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:18px 0}.box{background:#f3f8ff;border:1px solid #dce9ff;border-radius:16px;padding:14px;text-align:center}.box strong{display:block;color:#003b8f}.big{font-size:26px;font-weight:800;color:#009b3a}.progress{height:24px;background:#e7eef8;border-radius:999px;overflow:hidden;margin:14px 0}.bar{height:100%;width:0%;background:linear-gradient(90deg,#009b3a,#ffdf00)}.pix{background:#f8fff8;border:2px dashed #009b3a;border-radius:20px;padding:20px;margin-top:20px;text-align:center}.pix h2{margin-top:0}.pixkey{font-size:26px;font-weight:900;color:#003b8f;margin:12px 0}.btn{display:block;width:100%;border:0;border-radius:14px;padding:16px 18px;font-size:18px;font-weight:800;margin-top:12px;text-decoration:none;text-align:center;cursor:pointer}.green{background:#009b3a;color:#fff}.blue{background:#003b8f;color:#fff}.msg{margin-top:10px;font-weight:bold;color:#009b3a;min-height:24px}.footer{background:#003b8f;color:white;text-align:center;padding:20px;font-weight:bold}.small{font-size:14px;color:#516070}@media(max-width:650px){body{padding:8px}.hero h1{font-size:30px}.grid{grid-template-columns:1fr}.content{padding:18px}.pixkey{font-size:22px}.photo{max-height:none}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <h1>🎮 Meta Nintendo do Arthur ⚽</h1>
+      <p>Aniversário de 6 anos • Tema Copa 🇧🇷</p>
+    </section>
+
+    <img class="photo" src="arthur.jpg" alt="Foto do Arthur com camisa do Brasil" />
+
+    <section class="content">
+      <div class="tag">Ajude o Arthur a marcar esse golaço!</div>
+      <p>O Arthur sonha em ganhar um Nintendo, e decidimos transformar esse sonho em um objetivo coletivo. Estamos arrecadando via Pix na forma de presente.</p>
+
+      <div class="grid">
+        <div class="box"><strong>Meta</strong><span class="big" id="metaTxt">R$ 2.300,00</span></div>
+        <div class="box"><strong>Arrecadado</strong><span class="big" id="arrecadadoTxt">R$ 0,00</span></div>
+        <div class="box"><strong>Faltam</strong><span class="big" id="faltaTxt">R$ 2.300,00</span></div>
+      </div>
+
+      <div class="progress"><div class="bar" id="bar"></div></div>
+      <p class="small" id="percentTxt">0% da meta alcançada</p>
+
+      <section class="pix">
+        <h2>Faça sua contribuição via Pix 💚</h2>
+        <p><strong>Chave Pix:</strong></p>
+        <div class="pixkey" id="pixKey">(95) 99174-8005</div>
+        <p><strong>Anny Vitória Nunes da Conceição</strong></p>
+        <button class="btn green" onclick="copiarPix()">📋 Copiar chave Pix</button>
+        <div class="msg" id="msg"></div>
+        <a class="btn blue" href="https://wa.me/5595984194229?text=Oi%2C%20fiz%20uma%20contribui%C3%A7%C3%A3o%20para%20a%20Meta%20Nintendo%20do%20Arthur%20%F0%9F%8E%AE" target="_blank">💬 Enviar comprovante no WhatsApp</a>
+        <a class="btn green" href="https://wa.me/?text=Ajude%20o%20Arthur%20a%20realizar%20o%20sonho%20do%20Nintendo%20%F0%9F%8E%AE%20https%3A%2F%2Fluisfelipeos2644-stack.github.io%2FMeta-Arthur-%2F" target="_blank">📲 Compartilhar campanha</a>
+      </section>
+    </section>
+
+    <footer class="footer">💛 O mais importante é a sua presença e carinho. Obrigado por fazer parte desse sonho! 💙</footer>
+  </main>
+
+  <script>
+    const META = 2300;
+    const ARRECADADO = 0; // Para atualizar, troque somente este número. Ex: 350
+    const PIX = '(95) 99174-8005';
+
+    function dinheiro(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}    
+    const falta = Math.max(META - ARRECADADO, 0);
+    const percent = Math.min((ARRECADADO / META) * 100, 100);
+    document.getElementById('metaTxt').textContent = dinheiro(META);
+    document.getElementById('arrecadadoTxt').textContent = dinheiro(ARRECADADO);
+    document.getElementById('faltaTxt').textContent = dinheiro(falta);
+    document.getElementById('bar').style.width = percent + '%';
+    document.getElementById('percentTxt').textContent = Math.round(percent) + '% da meta alcançada';
+
+    function copiarPix(){
+      navigator.clipboard.writeText(PIX).then(()=>{
+        document.getElementById('msg').textContent = '✅ Chave Pix copiada!';
+      }).catch(()=>{
+        document.getElementById('msg').textContent = 'Copie a chave: ' + PIX;
+      });
+    }
+  </script>
+</body>
+</html>
