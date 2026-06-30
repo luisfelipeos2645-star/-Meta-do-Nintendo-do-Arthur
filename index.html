@@ -51,7 +51,7 @@
     const PIX = '(95) 99174-8005';
 
     function dinheiro(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}    
-    const falta = Math.max(META - ARRECADADO, 0);
+    const falta = Math.max(META - ARRECADADO, 100);
     const percent = Math.min((ARRECADADO / META) * 100, 100);
     document.getElementById('metaTxt').textContent = dinheiro(META);
     document.getElementById('arrecadadoTxt').textContent = dinheiro(ARRECADADO);
