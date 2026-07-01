@@ -23,7 +23,7 @@
 
       <div class="grid">
         <div class="box"><strong>Meta</strong><span class="big" id="metaTxt">R$ 2.300,00</span></div>
-        <div class="box"><strong>Arrecadado</strong><span class="big" id="arrecadadoTxt">R$ 100</span></div>
+        <div class="box"><strong>Arrecadado</strong><span class="big" id="arrecadadoTxt">R$ 300</span></div>
         <div class="box"><strong>Faltam</strong><span class="big" id="faltaTxt">R$ 2.300,00</span></div>
       </div>
 
@@ -47,12 +47,12 @@
 
   <script>
     const META = 2300;
-    const ARRECADADO = 100; // Para atualizar, troque somente este número. Ex: 350
+    const ARRECADADO = 300; // Para atualizar, troque somente este número. Ex: 350
     const PIX = '(95) 99174-8005';
 
     function dinheiro(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}    
-    const falta = Math.max(META - ARRECADADO, 100);
-    const percent = Math.min((ARRECADADO / META) * 100, 100);
+    const falta = Math.max(META - ARRECADADO, 300);
+    const percent = Math.min((ARRECADADO / META) * 300, 300);
     document.getElementById('metaTxt').textContent = dinheiro(META);
     document.getElementById('arrecadadoTxt').textContent = dinheiro(ARRECADADO);
     document.getElementById('faltaTxt').textContent = dinheiro(falta);
